@@ -45,6 +45,9 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       remotes: {
         home: "home@http://localhost:3000/remoteEntry.js", // Name of the remote repo ModuleFederationPlugin
+        pdp: "product_detailed_page@http://localhost:3001/remoteEntry.js",
+        cart: "cart@http://localhost:3002/remoteEntry.js",
+        addtocart: "addtocart@http://localhost:3003/remoteEntry.js",
       },
       exposes: {},
       shared: {

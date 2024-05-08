@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import Header from "home/Header";
 import Footer from "home/Footer";
@@ -17,4 +17,7 @@ const App = () => (
     <Footer />
   </div>
 );
-ReactDOM.render(<App />, document.getElementById("app"));
+
+const container = document.getElementById("app");
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(<App />);
