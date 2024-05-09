@@ -1,6 +1,7 @@
 import { createSignal, Show, createEffect } from "solid-js";
 
-import { cart, jwt } from "cart/cart";
+import { cart, jwt, addToCart } from "cart/cart";
+import "./index.scss";
 
 export default ({ id }) => {
   const [loggedIn, setLoggedIn] = createSignal(false);

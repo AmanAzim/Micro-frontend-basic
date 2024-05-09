@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 
 import { fetchProducts, fetchProductById, currency } from "home/products";
 import placeAddToCart from "addtocart/placeAddToCart";
+import "./index.scss";
 
 function PdpContent() {
   const { id } = useParams();
+  const addToCartRef = useRef(null);
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -13,6 +15,12 @@ function PdpContent() {
       fetchProductById(id).then((p) => setProduct(p));
     }
   }, [id]);
+
+  useEffect(() => {
+    if (addToCartRef.current) {
+      placeAddToCart(addToCartRef.current, id);
+    }
+  }, [product]);
 
   if (!product) return null;
 
@@ -28,7 +36,7 @@ function PdpContent() {
             {currency.format(product.price)}
           </div>
         </div>
-        {/* <div ref={addToCart}></div> */}
+        <div ref={addToCartRef}></div>
         <div className="mt-10">{product.description}</div>
         <div className="mt-10">{product.longDescription}</div>
       </div>
